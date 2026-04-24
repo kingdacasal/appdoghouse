@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - DogHouse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>DogHouse Inteligente</h1>
+
+<div class="card">
+  <h2>Temperatura</h2>
+  <p id="temp">-- °C</p>
+</div>
+
+<div class="card">
+  <h2>Distância da Água</h2>
+  <p id="agua">-- cm</p>
+</div>
+
+<div class="card">
+  <h2>Modo Atual</h2>
+  <p id="modo">AUTO</p>
+
+  <button onclick="setMode('AUTO')">AUTO</button>
+  <button onclick="setMode('VERAO')">VERÃO</button>
+  <button onclick="setMode('INVERNO')">INVERNO</button>
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>
