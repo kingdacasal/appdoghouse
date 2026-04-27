@@ -1,33 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard - DogHouse</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>DogHouse Inteligente</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="dashboard.js"></script>
 </head>
+
 <body>
 
-<h1>DogHouse Inteligente</h1>
+    <div class="container">
 
-<div class="card">
-  <h2>Temperatura</h2>
-  <p id="temp">-- °C</p>
-</div>
+        <!-- PAINEL TEMPERATURA -->
+        <div class="panel">
+            <h3>Temperatura</h3>
+            <h2 id="temp">-- ºC</h2>
+        </div>
 
-<div class="card">
-  <h2>Distância da Água</h2>
-  <p id="agua">-- cm</p>
-</div>
+        <!-- PAINEL ÁGUA -->
+        <div class="panel">
+            <h3>Distância da Água</h3>
+            <h2 id="agua">-- cm</h2>
+        </div>
 
-<div class="card">
-  <h2>Modo Atual</h2>
-  <p id="modo">AUTO</p>
+        <!-- PAINEL MODO -->
+        <div class="panel">
+            <h3>Modo Atual</h3>
+            <h2 id="modoAtual">AUTO</h2>
 
-  <button onclick="setMode('AUTO')">AUTO</button>
-  <button onclick="setMode('VERAO')">VERÃO</button>
-  <button onclick="setMode('INVERNO')">INVERNO</button>
-</div>
+            <div class="botoes-modo">
+                <button onclick="mudarModo('AUTO')">AUTO</button>
+                <button onclick="mudarModo('VERAO')">VERÃO</button>
+                <button onclick="mudarModo('INVERNO')">INVERNO</button>
+            </div>
+        </div>
 
-<script src="dashboard.js"></script>
+    </div>
+
 </body>
 </html>

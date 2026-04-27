@@ -1,17 +1,30 @@
-let modo = "AUTO";
+const dbUrl = "https://doghouse-inteligente-default-rtdb.europe-west1.firebasedatabase.app";
 
-function setMode(m) {
-  modo = m;
-  document.getElementById("modo").innerText = modo;
+// ====== LER DADOS ======
+async function lerFirebase() {
+    try {
+        const res = await fetch(`${dbUrl}/.json`);
+        const data = await res.json();
+
+        document.getElementById("temp").innerText = data.temperatura + " ºC";
+        document.getElementById("agua").innerText = data.agua + " cm";
+        document.getElementById("modoAtual").innerText = data.modo;
+    } catch (e) {
+        console.log("Erro ao ler Firebase:", e);
+    }
 }
 
-// valores falsos até ligar ao ESP32
-function updateFakeData() {
-  const fakeTemp = (20 + Math.random() * 10).toFixed(1);
-  const fakeAgua = Math.floor(5 + Math.random() * 20);
+// Atualiza a cada 1 segundo
+setInterval(lerFirebase, 1000);
 
-  document.getElementById("temp").innerText = fakeTemp + " °C";
-  document.getElementById("agua").innerText = fakeAgua + " cm";
+// ====== MUDAR MODO ======
+async function mudarModo(novoModo) {
+    try {
+        await fetch(`${dbUrl}/modo.json`, {
+            method: "PUT",
+            body: JSON.stringify(novoModo)
+        });
+    } catch (e) {
+        console.log("Erro ao mudar modo:", e);
+    }
 }
-
-setInterval(updateFakeData, 1000);
